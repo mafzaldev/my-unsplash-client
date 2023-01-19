@@ -1,0 +1,72 @@
+.grid-container {
+  column-count: 3;
+  column-gap: 0px;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.modal {
+  position: fixed;
+  width: 500px;
+  left: 35%;
+  top: 25%;
+  border-radius: 12px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px;
+  padding: 25px;
+  z-index: 15;
+}
+
+.modal-enter {
+  transform: translateY(10rem);
+  opacity: 0;
+}
+
+.modal-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 200ms;
+}
+
+.modal-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal-exit-active {
+  transform: translateY(-10rem);
+  opacity: 0;
+  transition: all 200ms;
+}
+
+@media screen and (max-width: 834px) {
+  .modal {
+    left: 20%;
+    top: 30%;
+  }
+
+  .grid-container {
+    column-count: 2;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .modal {
+    left: 1%;
+    width: 380px;
+  }
+  .grid-container {
+    column-count: 1;
+  }
+}

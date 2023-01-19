@@ -1,8 +1,14 @@
 const router = require("express").Router();
-const { getAllPhotos, uploadPhoto, deletePhoto } = require("./controllers");
+const {
+  getAllPhotos,
+  searchPhotos,
+  uploadPhoto,
+  deletePhoto,
+} = require("./controllers");
 
 router.get("/getphotos", getAllPhotos);
+router.get("/searchphotos/:query", searchPhotos);
 router.post("/uploadphoto", uploadPhoto);
-router.delete("/deletephoto", deletePhoto);
+router.delete("/deletephoto/:photoId", deletePhoto);
 
 module.exports = router;

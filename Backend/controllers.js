@@ -2,8 +2,16 @@ const Photo = require("./schema");
 const mongoose = require("mongoose");
 
 const getAllPhotos = async (req, res) => {
-  const allPhotos = await Photo.find({});
-  res.json({ allPhotos });
+  const responsePhotos = await Photo.find({});
+  res.json({ responsePhotos });
+};
+
+const searchPhotos = async (req, res) => {
+  const { query } = req.params;
+  const responsePhotos = await Photo.find({
+    photoLabel: { $regex: query, $options: "i" },
+  });
+  res.json({ responsePhotos });
 };
 
 const uploadPhoto = async (req, res) => {
@@ -20,14 +28,15 @@ const uploadPhoto = async (req, res) => {
 };
 
 const deletePhoto = async (req, res) => {
-  const { photoId } = req.body;
+  const { photoId } = req.params;
   await Photo.deleteOne({ photoId });
 
-  res.json("Photo deleted successfully");
+  res.json({ message: "Photo deleted successfully" });
 };
 
 module.exports = {
   getAllPhotos,
+  searchPhotos,
   uploadPhoto,
   deletePhoto,
 };
