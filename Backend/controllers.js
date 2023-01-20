@@ -2,12 +2,12 @@ const Photo = require("./schema");
 const mongoose = require("mongoose");
 
 const testEndpoint = (req, res) => {
-  res.json({ message: "Test endpoint works" });
+  res.status(200).json({ message: "Test endpoint works" });
 };
 
 const getAllPhotos = async (req, res) => {
   const responsePhotos = await Photo.find({});
-  res.json({ responsePhotos });
+  res.status(200).json({ responsePhotos });
 };
 
 const searchPhotos = async (req, res) => {
@@ -15,7 +15,7 @@ const searchPhotos = async (req, res) => {
   const responsePhotos = await Photo.find({
     photoLabel: { $regex: query, $options: "i" },
   });
-  res.json({ responsePhotos });
+  res.status(200).json({ responsePhotos });
 };
 
 const uploadPhoto = async (req, res) => {
@@ -28,14 +28,16 @@ const uploadPhoto = async (req, res) => {
   });
   await newPhoto.save();
 
-  res.json({ data: newPhoto, message: "Photo uploaded successfully" });
+  res
+    .status(200)
+    .json({ data: newPhoto, message: "Photo uploaded successfully" });
 };
 
 const deletePhoto = async (req, res) => {
   const { photoId } = req.params;
   await Photo.deleteOne({ photoId });
 
-  res.json({ message: "Photo deleted successfully" });
+  res.status(200).json({ message: "Photo deleted successfully" });
 };
 
 module.exports = {
