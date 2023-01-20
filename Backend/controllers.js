@@ -1,6 +1,10 @@
 const Photo = require("./schema");
 const mongoose = require("mongoose");
 
+const testEndpoint = (req, res) => {
+  res.json({ message: "Test endpoint works" });
+};
+
 const getAllPhotos = async (req, res) => {
   const responsePhotos = await Photo.find({});
   res.json({ responsePhotos });
@@ -35,6 +39,7 @@ const deletePhoto = async (req, res) => {
 };
 
 module.exports = {
+  testEndpoint,
   getAllPhotos,
   searchPhotos,
   uploadPhoto,

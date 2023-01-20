@@ -4,8 +4,10 @@ const {
   searchPhotos,
   uploadPhoto,
   deletePhoto,
+  testEndpoint,
 } = require("./controllers");
 
+router.get("/testendpoint", testEndpoint);
 router.get("/getphotos", getAllPhotos);
 router.get("/searchphotos/:query", searchPhotos);
 router.post("/uploadphoto", uploadPhoto);
