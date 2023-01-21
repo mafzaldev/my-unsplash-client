@@ -15,6 +15,8 @@ app.use(
 app.use("/api", routes);
 
 mongoose.set("strictQuery", false);
-mongoose.connect(process.env.MONGO_URI, () =>
-  app.listen(3000, () => console.log("Server Up and running at 3000"))
+mongoose.connect(
+  process.env.MONGO_URI,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => app.listen(3000, () => console.log("Server Up and running at 3000"))
 );

@@ -6,8 +6,9 @@ const testEndpoint = (req, res) => {
 };
 
 const getAllPhotos = async (req, res) => {
+  let responsePhotos;
   try {
-    const responsePhotos = await Photo.find({});
+    responsePhotos = await Photo.find({});
   } catch (err) {
     res.status(500).json({ message: "Internal server error" });
   }
@@ -17,9 +18,10 @@ const getAllPhotos = async (req, res) => {
 
 const searchPhotos = async (req, res) => {
   const { query } = req.params;
+  let responsePhotos;
 
   try {
-    const responsePhotos = await Photo.find({
+    responsePhotos = await Photo.find({
       photoLabel: { $regex: query, $options: "i" },
     });
   } catch (err) {
