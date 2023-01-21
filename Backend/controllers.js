@@ -6,15 +6,26 @@ const testEndpoint = (req, res) => {
 };
 
 const getAllPhotos = async (req, res) => {
-  const responsePhotos = await Photo.find({});
+  try {
+    const responsePhotos = await Photo.find({});
+  } catch (err) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+
   res.status(200).json({ responsePhotos });
 };
 
 const searchPhotos = async (req, res) => {
   const { query } = req.params;
-  const responsePhotos = await Photo.find({
-    photoLabel: { $regex: query, $options: "i" },
-  });
+
+  try {
+    const responsePhotos = await Photo.find({
+      photoLabel: { $regex: query, $options: "i" },
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+
   res.status(200).json({ responsePhotos });
 };
 
@@ -26,7 +37,11 @@ const uploadPhoto = async (req, res) => {
     photoLabel,
     photoURL,
   });
-  await newPhoto.save();
+  try {
+    await newPhoto.save();
+  } catch (err) {
+    res.status(500).json({ message: "Internal server error" });
+  }
 
   res
     .status(200)
@@ -35,7 +50,11 @@ const uploadPhoto = async (req, res) => {
 
 const deletePhoto = async (req, res) => {
   const { photoId } = req.params;
-  await Photo.deleteOne({ photoId });
+  try {
+    await Photo.deleteOne({ photoId });
+  } catch (err) {
+    res.status(500).json({ message: "Internal server error" });
+  }
 
   res.status(200).json({ message: "Photo deleted successfully" });
 };
