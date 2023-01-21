@@ -8,7 +8,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://my-unsplashv2.netlify.app/">
       Demo
     </a>
     <span> | </span>
@@ -38,10 +38,7 @@
 
 Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
 
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
+- The project demo can be accessed [here](https://my-unsplashv2.netlify.app/)
 
 ### Built With
 
@@ -61,7 +58,6 @@ This application/site was created as a submission to a [DevChallenges](https://d
 - User story: I can search for photos by label
 - User story: When I hover a photo, I can see a label and a delete button
 - User story: I can delete images
-- User story (optional): When I delete an image, I can enter my password
 
 ## How To Use
 
@@ -74,9 +70,28 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 $ git clone https://github.com/mafzaldev/my-unsplash
 
 # Install dependencies
+$ cd Backend
+
+# Install dependencies
 $ npm install
 
-# Run the app
+#Create a .env file with your MONGO_URI
+MONGO_URI="YOUR_MONGO_URI"
+
+# Run the backend app
+$ npm run dev
+
+# Move to Frontend
+$ cd ..
+$ cd Frontend
+
+# Install dependencies
+$ npm install
+
+#Create a .env file with your VITE_SERVER_ADDRESS(for local development)
+VITE_SERVER_ADDRESS="http://localhost:3000"
+
+# Run the frontend app
 $ npm start
 ```
 

@@ -26,13 +26,16 @@ const ModalOverlay = (props) => {
       photoURL: inputs.photoURL,
     };
 
-    const request = await fetch("http://localhost:3000/api/uploadphoto", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestBody),
-    });
+    const request = await fetch(
+      import.meta.env.VITE_SERVER_ADDRESS + "/api/uploadphoto",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      }
+    );
     const response = await request.json();
     props.setPhotos((prev) => [response.data, ...prev]);
     console.log(response.message);
