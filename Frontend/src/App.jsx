@@ -19,6 +19,11 @@ function App() {
       import.meta.env.VITE_SERVER_ADDRESS + "/api/deletephoto/" + id,
       {
         method: "DELETE",
+
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
       }
     );
     const response = await request.json();
@@ -44,6 +49,7 @@ function App() {
       const request = await fetch(searchQuery, {
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
       });
       const response = await request.json();
@@ -89,7 +95,9 @@ function App() {
           {photos.length > 0 ? (
             <MasonryGrid photos={photos} handleDelete={handleDelete} />
           ) : (
-            <div className="text-center text-xl">No photos found</div>
+            <div className="text-center text-xl">
+              No photos found or Backend service limit reached!
+            </div>
           )}
         </div>
       </div>
