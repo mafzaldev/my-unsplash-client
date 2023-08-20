@@ -27,7 +27,7 @@ function InputField({
       )}
       <div
         style={styles}
-        className={`flex gap-2 font-medium text-sm text-[#BDBDBD] border-[1px] border-solid rounded-xl`}
+        className={`flex gap-2 font-medium text-sm text-[#000000] border-[1px] border-solid rounded-xl`}
       >
         {children}
         <input
