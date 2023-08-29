@@ -16,7 +16,7 @@ function GridItem({ photo, handleDelete }) {
           >
             Delete
           </Button>
-          <span className="absolute left-5 bottom-5 text-[#fff] font-bold text-lg">
+          <span className="absolute left-5 bottom-5 text-[#fff] font-bold text-sm md:text-lg">
             {photo.photoLabel}
           </span>
         </div>
