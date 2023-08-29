@@ -1,10 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 
+import { isValidImageURL } from "../lib";
 import Backdrop from "./Backdrop";
-import InputField from "./InputField";
 import Button from "./Button";
+import InputField from "./InputField";
 
 const ModalOverlay = (props) => {
   const [inputs, setInputs] = useState({
@@ -20,6 +21,13 @@ const ModalOverlay = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const isValid = await isValidImageURL(inputs.photoURL);
+
+    if (!isValid) {
+      alert("Please enter a valid image URL.");
+      return;
+    }
 
     const requestBody = {
       photoLabel: inputs.photoLabel,
