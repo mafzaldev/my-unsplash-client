@@ -31,7 +31,7 @@ function InputField({
       >
         {children}
         <input
-          className="border-none outline-none text-left text-ellipsis w-5/6"
+          className="border-none outline-none text-left text-ellipsis w-full"
           name={name}
           type={type}
           value={value}
